@@ -47,6 +47,9 @@ public class Controller {
             case "find-the-best-student":
                 run.findTheBestStudent(pecahan[1], pecahan[2]);
                 break;
+            case "add-best-student":
+                run.addBestStudent();
+                break;
             case "---":
                 return;
             default:

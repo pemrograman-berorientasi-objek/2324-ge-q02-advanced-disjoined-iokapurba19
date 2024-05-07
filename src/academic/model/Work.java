@@ -236,6 +236,7 @@ public class Work {
     public void findTheBestStudent(String tahun, String semester){
         ArrayList<Enrollment> tempEnrl = new ArrayList<Enrollment>();
         ArrayList<Enrollment> unfilteredErnl = new ArrayList<Enrollment>();
+        ArrayList<Enrollment> Eligible = new ArrayList<Enrollment>();
         for(Enrollment E : Enrl){
             if(E.getSem().equals(semester) && E.getYear().equals(tahun)){
                 tempEnrl.add(E);
@@ -249,12 +250,18 @@ public class Work {
         for(Enrollment E : tempEnrl){
             if(E.getGrade().equals(bestGrade)){
                 count++;
+                Eligible.add(E);
             }
         }
-        if(count > 1){
-            bestStudent = unfilteredErnl.get(1).getStd();
-        }else {
-            bestStudent = unfilteredErnl.get(0).getStd();
+        for(Enrollment E : Eligible){
+            int nimAngka = Integer.parseInt(E.getStd().substring(5));
+            if(count > 1){
+                if(nimAngka % 2 == 0){
+                    bestStudent = E.getStd();
+                }
+            } else {
+                bestStudent = E.getStd();
+            }
         }
         String studentGrade = "";
         for(Enrollment E : Enrl){
@@ -268,6 +275,10 @@ public class Work {
             }
         }
         BestStudent.add(new BestStudent(bestStudent, studentGrade));
+    }
+
+    public void addBestStudent(){
+
     }
 
     public void printData() {
