@@ -71,7 +71,7 @@ public class Work {
             for(Lecturer l : Lctr){
                 if(l.getInitial().equals(list[i])){
                     String temp = l.getEmail();
-                    LecList = LecList.concat(list[i] + " (+" + temp + ")");
+                    LecList = LecList.concat(list[i] + " (" + temp + ")");
                     continue;
                 }
             }
